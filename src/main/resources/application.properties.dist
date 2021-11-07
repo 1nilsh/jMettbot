@@ -1,0 +1,7 @@
+spring.application.name=jmettbot
+server.port=8080
+
+mettbot.bot.name=name_bot
+mettbot.bot.apitoken=123:abcd
+mettbot.bot.webhook=https://foo.bar/update
+mettbot.owner=1234
