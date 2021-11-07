@@ -1,6 +1,5 @@
 package bz.nils.dev.jmettbot.Api;
 
-import bz.nils.dev.jmettbot.Business.UserCommand.RarepepeUserCommandStrategy;
 import bz.nils.dev.jmettbot.Business.UserCommand.UserCommandStrategy;
 import bz.nils.dev.jmettbot.Business.UserCommand.UserCommandStrategyFactory;
 import bz.nils.dev.jmettbot.Business.UserCommand.UserCommandStrategyName;
