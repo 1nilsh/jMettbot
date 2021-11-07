@@ -69,3 +69,6 @@ atlassian-ide-plugin.xml
 
 # VS Code
 .vscode/
+
+# Custom config
+**/application.properties
