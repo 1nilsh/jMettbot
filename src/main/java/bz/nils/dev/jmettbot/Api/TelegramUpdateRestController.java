@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-@RequestMapping("api/update/{apikey}")
+@RequestMapping("api/update/${mettbot.bot.apitoken}")
 @RestController
 public class TelegramUpdateRestController {
     private final Logger logger = Logger.getLogger(this.getClass().toString());

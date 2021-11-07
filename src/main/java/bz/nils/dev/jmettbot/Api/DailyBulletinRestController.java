@@ -5,9 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-@RequestMapping("api/daily-bulletin")
+@RequestMapping("api/daily-bulletin/${mettbot.bot.apitoken}")
 @RestController
 public class DailyBulletinRestController {
     private final DailyBulletinService dailyBulletinService;
@@ -18,7 +17,7 @@ public class DailyBulletinRestController {
     }
 
     @GetMapping
-    public void triggerNotification() throws TelegramApiException {
+    public void triggerNotification() {
         dailyBulletinService.sendBulletin();
     }
 }
