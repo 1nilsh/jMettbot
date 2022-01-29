@@ -12,6 +12,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class DailyBulletinService {
@@ -21,6 +23,7 @@ public class DailyBulletinService {
     private final Mettbot mettbot;
     private final CovidDataService covidApiRequestService;
     private final CryptoDataService cryptoDataService;
+    private final Logger logger = Logger.getLogger(this.getClass().toString());
 
     @Autowired
     public DailyBulletinService(Mettbot mettbot, CovidDataService covidApiRequestService, CryptoDataService cryptoDataService) {
@@ -38,7 +41,7 @@ public class DailyBulletinService {
         try {
             mettbot.execute(msg);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "Could not send bulletin message.", e);
         }
     }
 

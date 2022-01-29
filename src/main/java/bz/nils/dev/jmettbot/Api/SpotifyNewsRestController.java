@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("api/spotify/{apikey}")
+@RequestMapping("api/spotify")
 @RestController
 public class SpotifyNewsRestController {
     private SpotifyNewsService spotifyNewsService;

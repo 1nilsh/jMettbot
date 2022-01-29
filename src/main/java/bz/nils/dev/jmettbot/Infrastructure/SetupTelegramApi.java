@@ -7,9 +7,13 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.updates.SetWebhook;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Service
 public class SetupTelegramApi {
-    private Mettbot mettbot;
+    private final Mettbot mettbot;
+    private final Logger logger = Logger.getLogger(this.getClass().toString());
 
     @Autowired
     public SetupTelegramApi(Mettbot mettbot) {
@@ -24,7 +28,7 @@ public class SetupTelegramApi {
         try {
             mettbot.execute(setWebhook);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "Failed to set up Mettbot Telegram bot.", e);
         }
     }
 }

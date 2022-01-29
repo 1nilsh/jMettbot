@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 @Service
@@ -16,6 +18,8 @@ public class PepeScraperService {
     private final String USER_SUBMISSIONS_URL = "https://rare-pepe.com/user-submissions/";
 
     private final Pattern wordpressPreviewPattern = Pattern.compile("(-\\d{1,4}x\\d{1,4})");
+
+    private final Logger logger = Logger.getLogger(this.getClass().toString());
 
     public List<String> getPepes() {
         List<String> collection = crawl(COLLECTION_URL);
@@ -38,7 +42,7 @@ public class PepeScraperService {
                 result.add(imgUrl);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "Failed to crawl rare pepes.", e);
         }
 
         return result;

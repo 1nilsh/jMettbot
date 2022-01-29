@@ -4,18 +4,20 @@ import bz.nils.dev.jmettbot.Business.PepeScraperService;
 import bz.nils.dev.jmettbot.Infrastructure.Mettbot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class RarepepeUserCommandStrategy implements UserCommandStrategy {
-    private Mettbot mettbot;
-    private PepeScraperService pepeScraperService;
+    private final Mettbot mettbot;
+    private final PepeScraperService pepeScraperService;
+    private final Logger logger = Logger.getLogger(this.getClass().toString());
 
     @Autowired
     public RarepepeUserCommandStrategy(Mettbot mettbot, PepeScraperService pepeScraperService) {
@@ -37,7 +39,7 @@ public class RarepepeUserCommandStrategy implements UserCommandStrategy {
         try {
             mettbot.execute(sendPhoto);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, "Could not send pepe.", e);
         }
     }
 
